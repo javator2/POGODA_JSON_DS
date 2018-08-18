@@ -5,10 +5,15 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.Scanner;
+
+import static com.sda.pogoda.WeaterService.saveMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,10 +27,13 @@ public class Main {
 //        String url = "http://api.apixu.com/v1/current.json?key=b25f75b59648484499172849181808&" + "&q=" + city;
         scanner.close();
 
-        System.out.println(weaterService.getCityWeather(city));
+        Weather weather = weaterService.getCityWeather(city);
+        System.out.println(weather);
 
-//
-//
+        String mapUrl = "http://maps.googleapis.com/maps/api/staticmap?center=" + weather.getLat() + "," + weather.getLon() + "&size=600x600&zoom=12";
+        saveMap(mapUrl);
+
+
 //        try {
 //            System.out.println(IOUtils.toString(new URL(url), Charset.forName("UTF-8")));
 //

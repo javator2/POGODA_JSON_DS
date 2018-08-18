@@ -7,8 +7,26 @@ public class Weather {
     private double temp;
     private double feelsLikeTemp;
     private String conditionText;
+    private double lat;
+    private double lon;
 
     public Weather() {
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 
     public String getCity() {
@@ -68,6 +86,8 @@ public class Weather {
                 ", temp=" + temp +
                 ", feelsLikeTemp=" + feelsLikeTemp +
                 ", conditionText='" + conditionText + '\'' +
+                ", lat=" + lat +
+                ", lon=" + lon +
                 '}';
     }
 }
